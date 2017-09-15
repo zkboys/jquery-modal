@@ -16,11 +16,16 @@
     </style>
 </head>
 <body>
+<button id="prompt1">prompt1</button>
+<button id="prompt2">prompt2</button>
+<br>
+<br>
 <button id="alert1">alert弹框1</button>
 <button id="alert2">alert弹框2</button>
 <button id="alert3">alert弹框3</button>
 <button id="alert4">alert弹框4</button>
 
+<br>
 <br>
 
 <button id="confirm1">confirm确认框1</button>
@@ -30,10 +35,12 @@
 <button id="confirm5">confirm确认框5</button>
 
 <br>
+<br>
 
 <button id="showPreloader">showPreloader</button>
 <button id="showIndicator">showIndicator</button>
 
+<br>
 <br>
 
 <button id="toast1">toast1</button>
@@ -42,10 +49,24 @@
 <button id="toast4">toast4</button>
 
 <br>
+<br>
 <button id="actions">actions</button>
 
 <script>
     $(function () {
+        $('#prompt1').click(function () {
+            $.prompt('默认值', '标题',function(value){
+                alert('确定：'+value);
+            },function(){
+                alert('取消');
+            });
+        });
+        $('#prompt2').click(function () {
+            $.prompt('I\'m a title!',function(value){
+                alert('确定：'+value);
+            });
+        });
+
         $('#alert1').click(function () {
             $.alert('内容');
         });

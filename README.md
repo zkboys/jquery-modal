@@ -1,5 +1,5 @@
 # jquery-modal
-jquery 封装，IOS风弹框: alert confirm preloader indicator toast actions
+jquery 封装，IOS风弹框: alert prompt confirm preloader indicator toast actions
 
 ## 使用：
 需要引入 jquery.js modal.js modal.css，具体参考index.html

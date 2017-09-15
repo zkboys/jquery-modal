@@ -110,6 +110,33 @@
     var modalButtonCancel = '取消';
     var modalPreloaderTitle = '加载中';
     $.extend({
+        prompt: function (value, title, callbackOk, callbackCancel) {
+            if (arguments.length === 2) {
+                callbackOk = arguments[1];
+                title = arguments[0];
+                value = '';
+            }
+            var m = modal({
+                text: '<input class="modal-input" value="'+value+'"/>',
+                title: typeof title === 'undefined' ? modalTitle : title,
+                buttons: [
+                    {text: modalButtonCancel, onClick: callbackCancel},
+                    {text: modalButtonOk, bold: true, onClick: function(){
+                        var value = $('.modal-input').val();
+                        callbackOk && callbackOk(value);
+                    }}
+                ]
+            });
+            m.on('opened', function(){
+                var $input = $('.modal-input');
+                $input.focus();
+                var input = $input.get(0);
+                var value = $input.val();
+                var valueLength = value ? value.length : 0;
+                input.setSelectionRange && input.setSelectionRange(valueLength,valueLength);
+            });
+            return m;
+        },
         alert: function (text, title, callbackOk) {
             if (typeof title === 'function') {
                 callbackOk = arguments[1];
